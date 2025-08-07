@@ -263,7 +263,7 @@
                     datasets: [{
                         label: 'Knowledge Score',
                         data: topTierData.map(d => d.score),
-                        backgroundColor: energeticPlayful,
+                        backgroundColor: topTierData.map((_, i) => energeticPlayful[i % energeticPlayful.length]),
                         borderColor: '#ffffff',
                         borderWidth: 1
                     }]
@@ -294,6 +294,7 @@
                 }
             });
 
+            const regionalColors = regionalData.map((_, i) => energeticPlayful.slice().reverse()[i % energeticPlayful.length]);
             new Chart(document.getElementById('regionalBarChart'), {
                 type: 'bar',
                 data: {
@@ -301,7 +302,7 @@
                     datasets: [{
                         label: 'Regional Experience Score',
                         data: regionalData.map(d => d.score),
-                        backgroundColor: energeticPlayful.slice().reverse(),
+                        backgroundColor: regionalColors,
                         borderColor: '#ffffff',
                         borderWidth: 1
                     }]
